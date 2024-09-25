@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
-const Player = ({ currentSong }) => {
+
+const Player = ({ currentSong, playNext, playPrevious }) => {
   useEffect(() => {
     if (currentSong) {
       const audioPlayer = document.getElementById("audio-player");
@@ -26,10 +27,22 @@ const Player = ({ currentSong }) => {
             <h3 className="text-lg font-semibold">{currentSong.title}</h3>
           </div>
         </div>
+
+        {/* Previous Song Button */}
+        <button onClick={playPrevious} className="text-white mr-4">
+          Previous
+        </button>
+
+        {/* Audio Player */}
         <audio id="audio-player" controls className="w-1/2">
           <source src={currentSong.file} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
+
+        {/* Next Song Button */}
+        <button onClick={playNext} className="text-white ml-4">
+          Next
+        </button>
       </div>
     </div>
   );
